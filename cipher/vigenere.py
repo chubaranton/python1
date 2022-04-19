@@ -1,38 +1,37 @@
-import typing
 import sys
 
+class Vigener:
+    code = input()
+    key = input()
+    alphabet = ('abcdefghijklmnopqrstuvwxyz')
 
-code = input()
-key = input()
-alphabet = ('abcdefghijklmnopqrstuvwxyz')
 
-
-def coded(code, key, ind):
+def coded(self, code, key, ind):
     i = ind + 1
     for letter in key:
-        if letter not in alphabet:
+        if letter not in self.alphabet:
             print("Key for vigenere should be a word")
             sys.exit()
     result = []
     for el in code:
-        if el in alphabet:
-            el = alphabet[
-                (alphabet.find(el) +
-                    alphabet.find(key[i])) % len(alphabet)
+        if el in self.alphabet:
+            el = self.alphabet[
+                (self.alphabet.find(el) +
+                    self.alphabet.find(key[i])) % len(self.alphabet)
                 ]
             i = (i + 1) % len(key)
         result.append(el)
     return ''.join(result)
 
 
-def decode(code, key, ind):
+def decode(self, code, key, ind):
     result = []
     i = ind + 1
     for el in code:
-        if el in alphabet:
-            el = alphabet[
-                (alphabet.find(el) -
-                    alphabet.find(key[i]) + len(alphabet)) % len(alphabet)
+        if el in self.alphabet:
+            el = self.alphabet[
+                (self.alphabet.find(el) -
+                    self.alphabet.find(key[i]) + len(self.alphabet)) % len(self.alphabet)
                 ]
             i = (i + 1) % len(key)
         result.append(el)
